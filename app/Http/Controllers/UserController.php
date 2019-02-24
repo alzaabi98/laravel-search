@@ -20,6 +20,24 @@ class UserController extends Controller
             'q' => 'required'
         ]);
 
-        dd($request->q);
+
+        $q = $request->q;
+
+        $filteredUsers = User::where('name', 'like', '%' . $q . '%')
+                                ->orWhere('email', 'like', '%' . $q . '%')->get();
+
+        if ($filteredUsers->count()) {
+
+            return view('users.index')->with([
+                'users' =>  $filteredUsers
+            ]);
+        } else {
+            
+            return redirect('/users')->with([
+                'status' => 'search failed ,, please try again'
+            ]);
+        }
+        
     }
 }
+;

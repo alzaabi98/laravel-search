@@ -17,6 +17,12 @@
         <div class="row">
 
                 <div class="col-md-6 offset-md-2">
+                    @if( session('status'))
+                        <div class="alert alert-info">
+                            {{ session('status')}}
+                        </div>
+                    @endif
+                    
                     <table class="table">
                         <thead>
                             <tr>

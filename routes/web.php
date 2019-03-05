@@ -13,3 +13,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/users', 'UserController@index');
 Route::post('/users', 'UserController@search');
+
+// search via ajax- axios
+Route::view('/livesearch', 'livesearch');
+Route::get('/searchAjax/{q}', 'UserController@searchajax');

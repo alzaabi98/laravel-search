@@ -39,5 +39,17 @@ class UserController extends Controller
         }
         
     }
+
+    // axios search
+
+    public function searchajax($q) {
+        if ($q) {
+            $data = User::where('name', 'like' , '%'. $q .'%')->get();
+
+        } else {
+            $data = User::all();
+        }
+        
+        return response()->json($data);
+    }
 }
-;
